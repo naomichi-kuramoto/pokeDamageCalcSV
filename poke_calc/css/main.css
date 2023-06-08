@@ -1,0 +1,893 @@
+@charset "UTF-8";
+.calc-main{
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display:flex;
+}
+
+.inputInfo{
+    width: 50%;
+}
+/* 環境 */
+.environmentInfo {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size:0.8rem;
+    border:outset 3px #a9a9a9;
+    background-color: white;
+    margin:1px;
+    border-radius: 10px;
+}
+
+.environmentTitle{
+    font-size:1rem;
+    border-bottom:dashed 2px #a9a9a9 ;
+    color:#000033;
+    padding:2px 0;
+}
+
+.environmentTitle,.pokeInfoTitle{
+    text-align: center;
+    width: 100%;
+}
+.battleRules,
+.weathers,
+.terrains,
+.conditions,
+.buttonNature {
+    display: flex;
+    margin:3px;
+}
+
+.buttonNature{
+    display: flex;
+    margin:0;
+    justify-content: center;
+}
+
+.conditions{
+    margin-bottom:6px;
+}
+
+.conditionKanji{
+    display: none;
+}
+
+.battleRules.vertical,
+.weathers.vertical,
+.terrains.vertical,
+.conditions.vertical,
+.buttonNature.vertical {
+    flex-direction: column;
+}
+
+.battleRules label,
+.weathers label,
+.terrains label,
+.conditions label,
+.buttonNature label {
+    display: flex;
+    position: relative;
+    /* font-size: 10px; */
+}
+
+.battleRules [type=radio],
+.battleRules [type=checkbox],
+.weathers [type=radio],
+.weathers [type=checkbox],
+.terrains [type=radio],
+.terrains [type=checkbox],
+.conditions [type=radio],
+.conditions [type=checkbox],
+.buttonNature [type=radio],
+.buttonNature [type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* appearance: none; for IE11 */
+_:-ms-lang(x)::-ms-backdrop, .battleRules [type=radio],
+_:-ms-lang(x)::-ms-backdrop, .battleRules [type=checkbox],
+_:-ms-lang(x)::-ms-backdrop, .weathers [type=radio],
+_:-ms-lang(x)::-ms-backdrop, .weathers [type=checkbox],
+_:-ms-lang(x)::-ms-backdrop, .terrains [type=radio],
+_:-ms-lang(x)::-ms-backdrop, .terrains [type=checkbox],
+_:-ms-lang(x)::-ms-backdrop, .conditions [type=radio],
+_:-ms-lang(x)::-ms-backdrop, .conditions [type=checkbox],
+_:-ms-lang(x)::-ms-backdrop, .buttonNature [type=radio],
+_:-ms-lang(x)::-ms-backdrop, .buttonNature [type=checkbox] {
+visibility: hidden;
+}
+
+.battleRules .button,
+.weathers .button,
+.terrains .button,
+.conditions .button,
+.buttonNature .button {
+    z-index: 1;
+}
+
+.battleRules.vertical .button,
+.weathers.vertical .button,
+.terrains.vertical .button,
+.conditions.vertical .button,
+.buttonNature.vertical .button {
+    width: 100%;
+}
+
+.battleRules:not(.vertical) :not(:first-child) .button,
+.weathers:not(.vertical) :not(:first-child) .button,
+.terrains:not(.vertical) :not(:first-child) .button,
+.conditions:not(.vertical) :not(:first-child) .button,
+.buttonNature:not(.vertical) :not(:first-child) .button {
+    border-left: 1px solid #567;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.battleRules:not(.vertical) :not(:last-child) .button,
+.weathers:not(.vertical) :not(:last-child) .button,
+.terrains:not(.vertical) :not(:last-child) .button,
+.conditions:not(.vertical) :not(:last-child) .button,
+.buttonNature:not(.vertical) :not(:last-child) .button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.battleRules.vertical :not(:first-child) .button,
+.weathers.vertical :not(:first-child) .button,
+.terrains.vertical :not(:first-child) .button,
+.conditions.vertical :not(:first-child) .button,
+.buttonNature.vertical :not(:first-child) .button  {
+    border-top: 1px solid #567;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.battleRules.vertical :not(:last-child) .button,
+.weathers.vertical :not(:last-child) .button,
+.terrains.vertical :not(:last-child) .button,
+.conditions.vertical :not(:last-child) .button,
+.buttonNature.vertical :not(:last-child) .button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.battleRules :checked + .button,
+.weathers :checked + .button,
+.terrains :checked + .button,
+.conditions :checked + .button {
+    background-color: #808080;
+    outline: 3px inset #a9a9a9;
+    outline-offset: -3px;
+    color:white;
+}
+
+.battleRules :disabled + .button,
+.weathers :disabled + .button,
+.terrains :disabled + .button,
+.conditions :disabled + .button {
+    cursor: not-allowed;
+    opacity: .6;
+    color: #def;
+}
+
+
+.button {
+    display: inline-block;
+    padding: .25em .5em;
+    border-radius: 5px;
+    text-align: center;
+    color: black;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.buttonNature :checked + .button {
+    background-color: #808080;
+    outline: 3px inset #a9a9a9;
+    outline-offset: -3px;
+}
+
+.buttonNature > label > .button {
+    color: black;
+    background-color: #f5f5f5;
+    border:solid 1px #a9a9a9;
+    padding: 0px 5px;
+}
+
+.buttonNature > label:nth-child(2) > span {
+    padding: 0px 7px;
+}
+
+
+.button:hover {
+    background-color: #ccccff;
+}
+
+/* 環境 --ここまで */
+
+/* ポケモン情報 --共通 */
+.pokeInfo{
+    display:flex;
+    flex-wrap: wrap;
+    font-size:0.8rem;
+    margin:1px;
+    border-radius: 10px;
+    border:outset 3px;
+}
+
+.pokeInfoTitle{
+    font-size:1rem;
+    padding:2px 0;
+}
+
+.pokeName{
+    display:inline-block;
+    width:110px;
+    margin: 0 0.5rem;
+}
+
+.nature{
+    display:inline-block;
+    width:110px;
+    margin: 0 0.5rem;
+}
+
+.level{
+    margin: 0 0.5rem;
+}
+.pokeLevel{
+    display:inline-block;
+    width:40px;
+}
+
+.displayOnlySmallScreen{
+    display: none;
+}
+
+.remainingEffort input{
+    width:50px;
+}
+
+.pokeInfoHeader{
+    width:100%;
+    padding:4px 0;
+}
+
+.pokeInfoHeader *{
+    margin:1px 0px 1px 0.5rem;
+}
+
+.pokeInfoStatus{
+    width:49%;
+}
+
+table{
+    margin:5px auto;
+    table-layout: fixed; 
+    width: 100%;
+}
+
+table > thead > tr > th:nth-child(1){
+    width: 10px;
+}
+tbody > tr > th{
+    width: 10px;
+}
+
+table > thead > tr > th:nth-child(3){
+    width: 40px;
+}
+
+table > thead > tr > th:nth-child(5){
+    width: 40px;
+}
+
+td > input{
+    width:90%;
+}
+
+td > select{
+    width:100%;
+}
+
+td > input.Individual{
+    width:90%;
+    min-width: 36px;
+}
+
+td > button{
+    padding:0;
+    background-color: #f5f5f5;
+    border:solid 1px #a9a9a9;
+    border-radius: 5px;
+}
+
+td > button.Effort0{
+    padding:0 3px;
+    margin-left:2px;
+}
+
+.EffortDisplayOnlySmallScreen{
+    display:none;
+}
+
+.ActualDisplayOnlySmallScreen{
+    display:none;
+}
+
+.IndividualDisplayOnlySmallScreen {
+    display:none;
+}
+
+.pokeInfoFooter{
+    width:50%;
+}
+
+.pokeInfoFooter > label{
+    display: inline-block;
+    margin: 2px 0 0 2px;
+}
+
+.pokeConditionsInfo{
+    margin: 2px 0 0 2px;
+    border-radius: 5px;
+}
+
+.pokeConditionsInfo > label{
+    padding:3px 0 0 3px;
+}
+
+/* ポケモン情報共通 --ここまで */
+
+/* ポケモン情報 --自分のポケモン1 */
+.pokeInfo.poke1{
+    border:outset 3px #816dba;
+    background-color: #d0c1fa;
+}
+
+.pokeInfoTitle.poke1{
+    border-bottom:dashed 2px #816dba;
+    color: #003300;
+}
+
+.pokeInfoHeader.poke1{
+    border-bottom:solid 1px #816dba;
+}
+
+.pokeInfoFooter.poke1{
+    border-left:solid 1px #816dba;
+}
+
+.pokeConditionsInfo.poke1{
+    outline: 3px inset #816dba;
+    outline-offset: -3px;
+    margin-bottom: 3px;
+    background-color:#816dba;
+}
+
+/* ポケモン情報 --自分のポケモン1 ここまで*/
+
+/* ポケモン情報 --自分のポケモン2 */
+.pokeInfo.poke2{
+    border:outset 3px #ef795e;
+    background-color: #efb6aa;
+}
+
+.pokeInfoTitle.poke2{
+    border-bottom:dashed 2px #ef795e;
+    color: #660033;
+}
+
+.pokeInfoHeader.poke2{
+    border-bottom:solid 1px #ef795e;
+}
+
+.pokeInfoFooter.poke2{
+    border-left:solid 1px #ef795e;
+}
+
+.pokeConditionsInfo.poke2{
+    outline: 3px inset #ef795e;
+    outline-offset: -3px;
+    margin-bottom: 3px;
+    background-color:#ef795e;
+}
+/* ポケモン情報 --自分のポケモン2 ここまで*/
+
+/* ダメージ計算部共通 */
+.tabPokeInfo,.tabDamageCalc{
+    display: none;
+}
+
+.damageCalc{
+    width: 49%;
+}
+.damageCalcWrapper{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    height:700px;
+}
+
+.poke1Topoke2{
+    width: 48%;
+    height: 100%;
+    font-size:0.8rem;
+    border:outset 3px;
+    border-radius: 10px;
+    margin-top: 1px;
+}
+
+.poke2Topoke1{
+    width: 48%;
+    height: 100%;
+    font-size:0.8rem;
+    border:outset 3px;
+    border-radius: 10px;
+    margin-left:3px;
+    margin-top: 1px;
+}
+
+.pokeDamageCalcList{
+    overflow-y: scroll;
+    height: 80%;
+    border-bottom:dashed 2px #cccccc;
+}
+
+.pokeDamageCalcTitle{
+    text-align:center;
+    font-size: 1rem;
+    padding:2px 0;
+    border-bottom:dashed 2px #cccccc;
+}
+
+.pokeConditionsInfo{
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.pokeConditionsInfo label{
+    display:block;
+}
+
+.moveCell{
+    padding:5px 20px 5px 10px;
+    border-bottom: solid 1px #cccccc;
+}
+
+.allMoveDisplay{
+    display: inline-block;
+    margin:10px 0 0 5px;
+}
+
+/*モーダル本体の指定 + モーダル外側の背景の指定*/
+.modal-container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: rgba(0,0,0,50%);
+	padding: 50px 20px;
+	overflow: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s;
+    box-sizing: border-box;
+}
+/*モーダル本体の擬似要素の指定*/
+.modal-container:before{
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-container.active{
+	opacity: 1;
+	visibility: visible;
+    z-index: 5;
+}
+/*モーダル枠の指定*/
+.modal-body{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+/*モーダルを閉じるボタンの指定*/
+.modal-close{
+	position: absolute;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	top: -50px;
+	right: -45px;
+	width: 40px;
+	height: 40px;
+	font-size: 40px;
+	color: #fff;
+	cursor: pointer;
+    border:solid 3px #fff;
+    border-radius: 50%;
+}
+
+.copyHtml{
+    position: absolute;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	top: -50px;
+	left: -45px;
+	width: 40px;
+	height: 40px;
+	font-size: 12px;
+	color: #fff;
+	cursor: pointer;
+    border:solid 3px #fff;
+    border-radius: 50%;
+    font-size: 0.6rem;
+}
+
+.copyImage{
+    position: absolute;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	top: -50px;
+	left: 0px;
+	width: 40px;
+	height: 40px;
+	font-size: 12px;
+	color: #fff;
+	cursor: pointer;
+    border:solid 3px #fff;
+    border-radius: 50%;
+    font-size: 0.6rem;
+}
+
+.copyHtml:hover,.copyImage:hover{
+    color: #000;
+    border:solid 3px #000;
+    background-color: #fff;
+}
+
+/*モーダル内のコンテンツの指定*/
+.modal-content{
+	text-align: left;
+}
+
+.copy-content{
+    min-width: 450px;
+}
+
+/* ダメージ計算部　ここまで */
+
+/*タブレット用レスポンシブ*/
+@media screen and (max-width: 1005px) {
+	.calc-main{
+        display:block;
+    }
+
+    .inputInfo{
+        width: 100%;
+    }
+
+    .damageCalc{
+        width: 100%;
+    }
+
+    .poke1Topoke2{
+        width: 49%;
+    }
+    
+    .poke2Topoke1{
+        width: 49%;
+    }
+
+}
+
+/*スマートフォン用レスポンシブ*/
+@media screen and (max-width: 600px) {
+    .calc-main{
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+        position: relative;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+
+    .calc-main > div{
+        scroll-snap-align: start;
+        height: 100%;
+        width: 99%;   
+    }
+
+    .inputInfo{
+        height: 100vh;
+    }
+    .pokeInfo{
+        font-size: 0.7rem;
+    }
+
+    .pokeInfoStatus{
+        width:100%;
+    }
+
+    .pokeInfoFooter{
+        width:100%;
+    }
+
+    .displayOnlyBigScreen{
+        display: none;
+    }
+
+    .displayOnlySmallScreen{
+        display: inline;
+    }
+
+    .pokeConditionsInfo{
+        display:flex;
+        flex-wrap: wrap;
+        width:99%;
+        height: 70px;
+    }
+
+    .pokeInfoFooter.poke1{
+        border-left:none;
+        border-top:solid 1px #816dba;
+    }
+    
+    .pokeInfoFooter.poke2{
+        border-left:none;
+        border-top:solid 1px #ef795e;
+    }
+
+
+
+    .pokeDamageCalcList{
+        overflow-y:unset;
+        border: none;
+    }
+
+    .environmentInfo{
+        font-size: 0.7rem;
+    }
+
+    .pokeInfoWrapper{
+        display: flex;
+        scroll-snap-type: x mandatory;
+        position: relative;
+        width: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+    
+    .pokeInfoWrapper > div{
+        flex:none;
+        scroll-snap-align: start;
+        height: 100%;
+        width: 99%;   
+    }
+
+    .pokeInfo.poke1 , .pokeInfo.poke2{
+        border-top:none;
+        border-radius: 0 0 5px 5px;
+        margin-top:0;
+    }
+    .environmentTitle,.pokeDamageCalcTitle{
+        font-size: 0.8rem;
+        padding:1px 0;
+    }
+
+    .pokeInfoTitle{
+        display: none;
+    }
+
+    .pokeDamageCalcTitle{
+        /* position: sticky;
+        top: 0;
+        z-index: 4; */
+        display:none;
+    }
+
+    /* .poke1Topoke2 > .pokeDamageCalcTitle{
+        background-color:#d0c1fa;
+        border-bottom: dashed 2px #816dba;
+    }
+
+    .poke2Topoke1 > .pokeDamageCalcTitle{
+        background-color:#ef795e;
+        border-bottom:dashed 2px #ef795e;
+    } */
+    
+    .copy-content{
+        min-width: 350px;
+    }
+
+    .damageCalcWrapper{
+        flex-wrap:unset;
+        /* height: auto; */
+        scroll-snap-type: x mandatory;
+        position: relative;
+        width: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+
+    .damageCalcWrapper > div{
+        flex:none;
+        scroll-snap-align: start;
+        width: 100%;
+        border:none;
+    }
+
+    .allMoveDisplay{
+        margin:20px 0 0 5px;
+    }
+    
+    .modal-body{
+        top:50px;
+    }
+
+    .modal-container{
+        padding:50px 0;
+    }
+    .modal-container:before{
+        height: auto;
+    }
+
+    .modal-close{
+        right:10px;
+    }
+
+    .copyHtml{
+        left:0;
+    }
+
+    .copyImage{
+        left:50px;
+    }
+
+    table > thead > tr > th:nth-child(3){
+        width: auto;
+    }
+
+    td > input.Individual{
+        min-width: auto;
+        width: 100%;
+    }
+
+    td > input{
+        min-width: auto;
+        width: 100%;
+    }
+
+    .EffortDisplayOnlySmallScreen{
+        display:inline;
+        width: 50%;
+    }
+
+    .ActualDisplayOnlySmallScreen{
+        display:inline;
+        width: 50%;
+    }
+    
+    .IndividualDisplayOnlySmallScreen {
+        display:inline;
+        width: 50%;
+    }
+
+    button.Effort252{
+        display: block;
+        width: 100%;
+    }
+
+    button.Effort0{
+        display: block;
+        width: 100%;
+    }
+    
+    td > button.Effort0{
+        margin: 0;
+    }
+
+    .buttonNature{
+        display: block;
+    }
+
+    .buttonNature > label > span{
+        display: block;
+        width: 100%;
+    }
+
+    .buttonNature:not(.vertical) :not(:first-child) .button {
+        border-left: 1px solid #567;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    
+    .buttonNature:not(.vertical) :not(:last-child) .button {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .buttonNature.vertical :not(:first-child) .button  {
+        border-top: 1px solid #567;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .buttonNature.vertical :not(:last-child) .button {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    /* タブ */
+    .tabPokeInfo,.tabDamageCalc{
+        display: block;
+        font-size: 0.8rem;
+    }
+
+    .tabPokeInfo ul,.tabDamageCalc ul {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .tabPokeInfo li,.tabDamageCalc li {
+        display: table-cell;
+        text-align: center;
+        list-style-type: none;
+        border-radius:5px 5px 0 0;
+    }
+    .tabPokeInfo li a ,.tabDamageCalc li a{
+        display: block;
+        text-decoration: none;
+    }
+
+    div.tabPokeInfo > ul > li:nth-child(1){
+        background-color: #d0c1fa;
+        border:outset 3px #816dba;
+    }
+
+    div.tabPokeInfo > ul > li:nth-child(2){
+        border:outset 3px #ef795e;
+        background-color: #efb6aa;
+    }
+
+    div.tabPokeInfo > ul > li.active{
+        border-bottom:none
+    }
+
+    div.tabDamageCalc > ul > li:nth-child(1){
+        background-color: #d0c1fa;
+        border:outset 3px #816dba;
+    }
+
+    div.tabDamageCalc > ul > li:nth-child(2){
+        border:outset 3px #ef795e;
+        background-color: #efb6aa;
+    }
+
+    div.tabDamageCalc > ul > li:nth-child(1).active{
+        border-bottom:none
+    }
+
+    div.tabDamageCalc > ul > li:nth-child(2).active{
+        border-bottom:none
+    }
+}
