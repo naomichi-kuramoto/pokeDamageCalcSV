@@ -653,6 +653,35 @@ var powerModifier = [
       },
       description: "相手がどく状態のとき、威力2倍",
     },
+    {
+      trigger: "どくばりセンボン",
+      category: "name",
+      holder: "move",
+      modifier: 8192,
+      condition: function (n) {
+        return (
+          "どく" === n.defender.aliment ||
+          "もうどく" === n.defender.aliment
+        );
+      },
+      description: "相手がどく状態のとき、威力2倍",
+    },
+    {
+      trigger: "ひゃっきやこう",
+      category: "name",
+      holder: "move",
+      modifier: 8192,
+      condition: function (n) {
+        return (
+          "どく" === n.defender.aliment ||
+          "もうどく" === n.defender.aliment ||
+          "やけど" === n.defender.aliment ||
+          "まひ" === n.defender.aliment ||
+          "ねむり" === n.defender.aliment
+        );
+      },
+      description: "相手がどく状態のとき、威力2倍",
+    },
   //   {
   //     trigger: "かたきうち",
   //     category: "name",
